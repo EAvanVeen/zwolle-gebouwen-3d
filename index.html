@@ -1,0 +1,62 @@
+<!-- http://zrh.mapsdevext.arcgis.com/home/webscene/viewer.html?webscene=6d7fedb7a8d84c9fad6903583c6c63c6 -->
+<!-- http://jsapi.maps.arcgis.com/home/webscene/viewer.html?webscene=d9d0b213cd814daa82a8e7142c9dda6e -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>Zwolle in 3D</title>
+  <link rel="stylesheet" href="https://js.arcgis.com/next/esri/css/main.css" />
+  <link rel="stylesheet" href="./style.css" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+  <script>
+    window.dojoConfig = {
+      async: true,
+      packages: [{
+        name: 'app',
+        location: location.pathname.replace(/\/[^\/]+$/, '') + '/app/'
+      }]
+    };
+  </script>
+  <script src="https://js.arcgis.com/next/"></script>
+  <script>
+    require([
+      'app/main'
+    ], function (main) {
+      main.init();
+    });
+  </script>
+</head>
+
+<body>
+  <div id="viewDiv">
+    <div id="statsContainer">
+      <div class="title">Zwolle in 3D</div>
+      <div class="charts">
+        <div>
+          <canvas id="yearChart" width="350" height="170"></canvas>
+          <button id="applyYearRenderer">Kleur op basis van bouwjaar</button>
+        </div> <br>
+        <div>
+          <canvas id="heightChart" width="350" height="170"></canvas>
+          <button id="applyHeightRenderer">Kleur op basis van hoogte</button>
+        </div><br>
+        <div>
+          <canvas id="usageChart" width="350" height="170"></canvas>
+          <button id="applyUsageRenderer">Kleur op basis van gebruiksfunctie</button>
+        </div><br>
+      </div>
+      <div class="buttons">
+        <button id="drawPolygon">Teken een selectie polygoon</button>
+        <button id="clearSelection">Verwijder selectie</button>
+        <button id="clearRenderer">Verwijder renderer</button>
+      </div><br>
+    </div>
+    <div id="timeContainer" class="esri-widget">
+    </div>
+  </div>
+</body>
+
+</html>
